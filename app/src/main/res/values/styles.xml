@@ -8,4 +8,27 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- 每个页面头布局当中的文字样式-->
+    <style name="titleTvStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- 主界面四个模块文字的样式-->
+    <style name="mainTvStyle">
+        <item name="android:layout_height">110dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
 </resources>

@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">MyDict</string>
+    <string name="app_name">新华字典</string>
+    <string name="title_name">新华字典</string>
+
+    <string name="main_tv_pinyin" translatable="false">拼音查询</string>
+    <string name="main_tv_bushou" translatable="false">部首查询</string>
+    <string name="main_tv_chengyu" translatable="false">成语查询</string>
+    <string name="main_tv_tuwen" translatable="false">图文识字</string>
+    <string name="main_tv_yiju" translatable="false">每日一句</string>
+    <string name="main_tv_yiju2" translatable="false">金钱难买健康，健康大于金钱，金钱难买幸福，幸福必有健康，生命的幸福不在名利在健康，身体的强壮不在金钱在运动！</string>
+    <string name="setting" translatable="false">设置</string>
+    <string name="setting_collect" translatable="false">收藏</string>
+    <string name="setting_feedback" translatable="false">反馈</string>
+    <string name="setting_share" translatable="false">分享</string>
+    <string name="setting_good" translatable="false">好评</string>
+    <string name="setting_about" translatable="false">关于我们</string>
+
 </resources>
