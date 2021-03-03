@@ -2,9 +2,11 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
+    <color name="blackAlpa">#33000000</color>
     <color name="colorAccent">#03DAC5</color>
+
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="colorBg_grey">#f3f3f3</color>
-    <color name="color_titleBg">#f0f0f0</color>
+    <color name="titleBg">#f0f0f0</color>
 </resources>
