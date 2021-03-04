@@ -1,0 +1,2 @@
+# MyDict
+init project
