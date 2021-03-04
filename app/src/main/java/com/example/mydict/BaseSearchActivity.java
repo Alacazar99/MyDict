@@ -1,24 +1,27 @@
 package com.example.mydict;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.example.mydict.adapter.SearchLeftAdapter;
+import com.example.mydict.adapter.SearchRightWordAdapter;
 import com.example.mydict.bean.PinBuBean;
+import com.example.mydict.bean.PinBuWordBean;
 import com.example.mydict.utils.AssetsUtils;
 import com.example.mydict.utils.CommonUtils;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.stream.JsonReader;
 import com.handmark.pulltorefresh.library.PullToRefreshGridView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseSearchActivity extends AppCompatActivity {
+public class BaseSearchActivity extends BaseActivity {
 
     TextView titleTv;
     ExpandableListView ElistView;
@@ -29,6 +32,16 @@ public class BaseSearchActivity extends AppCompatActivity {
     int selGroupPos = 0; // 表示被点击的组的位置；
     int selChildPos = 0; // 表示被点击的子元素的位置；
 
+    List<PinBuWordBean.ResultBean.ListBean> gridDatas;  //查询页面右侧的数据源；
+
+    SearchRightWordAdapter gridAdapter;
+
+    int totalPage;  // 总页数；
+    int page;    // 当前的 获取页数；
+    int pagesize = 24;   // 默认一页默认获取24条数据；
+    String word = "";   // 点击的左侧的那个拼音 或者 部首；
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +50,51 @@ public class BaseSearchActivity extends AppCompatActivity {
         ElistView = findViewById(R.id.search_elv);
         pullToRefreshGridView = findViewById(R.id.searchpy_gv);
         setExLvListener();
+        initGridDatas();
+    }
+
+    /**
+     * 初始化 查询页面右侧的数据源；
+     * */
+    private void initGridDatas() {
+        gridDatas = new ArrayList<>();
+        // 设置适配器；
+        gridAdapter = new SearchRightWordAdapter(this, gridDatas);
+        pullToRefreshGridView.setAdapter(gridAdapter);
+    }
+
+    /**
+     * 加载数据成功，调用，json;
+     * @param result
+     */
+    @Override
+    public void onSuccess(String result) {
+
+        PinBuWordBean bean = new Gson().fromJson( result, PinBuWordBean.class);
+        Log.d("TAG", "onSuccess: " + bean);
+
+        PinBuWordBean.ResultBean resultBean = bean.getResult();
+        totalPage = resultBean.getTotalpage();   //将当前获取数据的总页数进行保存
+        List<PinBuWordBean.ResultBean.ListBean> list = resultBean.getList();
+        // 加载数据；
+        refreshDataByGv(list);
+    }
+
+    /**
+     * 更新gridview 当中的数据，提示适配器重新加载；
+     * @param list
+     */
+    private void refreshDataByGv( List<PinBuWordBean.ResultBean.ListBean> list) {
+        if (page == 1) {
+            gridDatas.clear();
+            gridDatas.addAll(list);
+            adapter.notifyDataSetChanged();
+        }else {    // 进行上拉 加载新的一页； 数据保留；
+            gridDatas.addAll(list);
+            adapter.notifyDataSetChanged();
+            // 停止显示加载条；
+            pullToRefreshGridView.onRefreshComplete();
+        }
     }
 
     private void setExLvListener() {

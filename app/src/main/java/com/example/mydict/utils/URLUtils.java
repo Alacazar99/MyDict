@@ -25,6 +25,7 @@ public class URLUtils {
     public static String getPinyinurl(String word,int page,int pagesize){
         String url = pinyinurl+DICTKEY+"&word="+word+"&page="+page+"&pagesize="+pagesize;
         return url;
+        // "http://v.juhe.cn/xhzd/querypy?key=3022583457067131a719f84d10efd275&word=a&page=1&pagesize=24"
     }
 
     public static String getBushouurl(String bs,int page,int pagesize){

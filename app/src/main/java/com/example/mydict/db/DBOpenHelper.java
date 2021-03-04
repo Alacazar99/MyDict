@@ -1,4 +1,4 @@
-package com.hui.dict.db;
+package com.example.mydict.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

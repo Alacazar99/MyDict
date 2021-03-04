@@ -37,16 +37,19 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scrollbars="none"/>
+
         <com.handmark.pulltorefresh.library.PullToRefreshGridView
             android:id="@+id/searchpy_gv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:numColumns="4"
-            android:verticalSpacing="2dp"
-            android:horizontalSpacing="2dp"
-            android:layout_marginTop="30dp"
+            android:numColumns="3"
+            android:scrollbars="none"
+            android:verticalSpacing="5dp"
+            android:horizontalSpacing="5dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             />
     </LinearLayout>
 
